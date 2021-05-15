@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<ProjectWorkspace xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="project_mpw.xsd">
+
+  <SchemaVersion>1.0</SchemaVersion>
+
+  <Header>### uVision Project, (C) Keil Software</Header>
+
+  <WorkspaceName>KiteLib</WorkspaceName>
+
+  <project>
+    <PathAndName>.\CM0\KiteLibCM0.uvproj</PathAndName>
+    <NodeIsActive>1</NodeIsActive>
+    <NodeIsExpanded>1</NodeIsExpanded>
+  </project>
+
+  <project>
+    <PathAndName>.\CM3\KiteLibCM3.uvproj</PathAndName>
+  </project>
+
+  <project>
+    <PathAndName>.\LPC13XX\KiteLibLPC13XX.uvproj</PathAndName>
+    <NodeIsExpanded>1</NodeIsExpanded>
+  </project>
+
+</ProjectWorkspace>
