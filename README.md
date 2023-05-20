@@ -16,11 +16,11 @@ DWORD  AppStatusStack[256];
 
 void AppStatus(void)
 {
-	LPC_GPIO2->FIODIR	|= (LED_LAMP);
+  LPC_GPIO2->FIODIR	|= (LED_LAMP);
   while (1)
   {   
     OsWaitDelay(OS_TICKS_PER_SEC);
-  	LPC_GPIO2->FIOPIN ^= LED_LAMP;
+    LPC_GPIO2->FIOPIN ^= LED_LAMP;
  }
 }
 void AppEntry(void)  
