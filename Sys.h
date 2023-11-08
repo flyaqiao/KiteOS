@@ -1,11 +1,11 @@
-/* 
+/*
 * Copyright (c) 2011 - 2011, 凯特科技
-* All rights reserved. 
-* 
-*  
-* 文件名称：$HeadURL: svn://www.svnhost.cn/Others/Trunk/UcosTest/Sys.h $ 
+* All rights reserved.
+*
+*
+* 文件名称：$HeadURL: svn://www.svnhost.cn/Others/Trunk/UcosTest/Sys.h $
 * 摘    要：
-*  
+*
 * 当前版本：V0.1 $Revision: 642 $
 * 最后修改：$Author: flyaqiao $
 * 修改日期：$LastChangedDate:: 2011-10-26 23:20:54#$
@@ -14,15 +14,15 @@
 #ifndef __SYS_H__
 #define __SYS_H__
 
-typedef unsigned char     BYTE; 
-typedef unsigned short    WORD; 
-typedef unsigned long     DWORD; 
-typedef unsigned int      BOOL; 
+typedef unsigned char     BYTE;
+typedef unsigned short    WORD;
+typedef unsigned long     DWORD;
+typedef unsigned int      BOOL;
 
-typedef BYTE*					    LPBYTE;
+typedef BYTE             *LPBYTE;
 
 #define TRUE              1
-#define FALSE             0 
+#define FALSE             0
 #define NULL              0
 #define INFINITE          0xFFFF
 
@@ -33,8 +33,7 @@ typedef BYTE*					    LPBYTE;
 #define OS_TICKS_PER_SEC  200             // 系统节拍
 
 // 任务状态说明
-typedef enum TaskStatus
-{
+typedef enum TaskStatus {
   TSNone,           // 没有该任务
   TSActive,         // 激活任务
   TSDelay,          // 任务延迟
@@ -42,8 +41,7 @@ typedef enum TaskStatus
   TSWaitMail        // 任务等待邮箱
 } TASKSTATUS;
 
-typedef struct OsTcb
-{
+typedef struct OsTcb {
   TASKSTATUS  Status;             // 任务状态
   DWORD       Stack;              // 任务堆栈指针
   DWORD       Delay;              // 任务延迟
@@ -55,9 +53,9 @@ typedef struct OsTcb
 #endif
 } OS_TCB;
 
-extern void   OsInit(void);                                   
+extern void   OsInit(void);
 extern void   OsStart(void);
-extern void   OsCreateTask(void* addtsk, DWORD* stkTop, BYTE taskNo);
+extern void   OsCreateTask(void *addtsk, DWORD *stkTop, BYTE taskNo, void* param);
 extern void   OsWaitDelay(WORD dlyTime);
 #if OS_MAX_SIGNAL > 0
 extern BYTE   OsWaitSignal(DWORD signal, WORD dlyTime);

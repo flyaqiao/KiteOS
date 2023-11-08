@@ -28,11 +28,11 @@ typedef enum { FALSE = 0, TRUE = !FALSE } BOOL;
 #endif
 #define INFINITE          0xFFFF
 
-#define SystemFrequency   48000000
 #define OS_TICKS_PER_SEC  200             // о╣мЁ╫зед
+
 void    OsInit(void);                                   
 void    OsStart(void);
-void    OsCreateTask(void* addtsk, DWORD* stkTop, BYTE taskNo);
+void    OsCreateTask(void *addtsk, DWORD *stkTop, BYTE taskNo, void* param);;
 void    OsWaitDelay(WORD dlyTime);
 BYTE    OsWaitSignal(DWORD signal, WORD dlyTime);
 void    OsSetSignal(DWORD signal);

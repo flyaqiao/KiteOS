@@ -30,7 +30,7 @@ typedef BYTE*					    LPBYTE;
 
 void    OsInit(void);                                   
 void    OsStart(void);
-void    OsCreateTask(void* addtsk, DWORD* stkTop, BYTE taskNo);
+void    OsCreateTask(void *addtsk, DWORD *stkTop, BYTE taskNo, void* param);;
 void    OsWaitDelay(WORD dlyTime);
 BYTE    OsWaitSignal(DWORD signal, WORD dlyTime);
 void    OsSetSignal(DWORD signal);
