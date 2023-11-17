@@ -26,17 +26,17 @@ typedef enum { FALSE = 0, TRUE = !FALSE } BOOL;
 #ifndef NULL
 #define NULL							((void*) 0)
 #endif
-#define INFINITE          0xFFFF
+#define INFINITE          (-1)
 
 #define OS_TICKS_PER_SEC  200             // о╣мЁ╫зед
 
 void    OsInit(void);                                   
 void    OsStart(void);
 void    OsCreateTask(void *addtsk, DWORD *stkTop, BYTE taskNo, void* param);;
-void    OsWaitDelay(WORD dlyTime);
-BYTE    OsWaitSignal(DWORD signal, WORD dlyTime);
+void    OsWaitDelay(int dlyTime);
+BYTE    OsWaitSignal(DWORD signal, int dlyTime);
 void    OsSetSignal(DWORD signal);
-BYTE    OsWaitMail(BYTE mailNo, WORD dlyTime);
+BYTE    OsWaitMail(BYTE mailNo, int dlyTime);
 DWORD   OsGetMail(BYTE mailNo);
 //extern void   OsSendMail(BYTE mln, DWORD mail);
 //extern void   OsIsrSendMail(BYTE mln);
@@ -47,7 +47,7 @@ DWORD   OsExitCritical(void);
 void    OsIntEnter(void);
 void    OsIntExit(void);
 void    UartInit(DWORD baudRate, DWORD iRecvNewLineEvent);
-BYTE		UartReadBuf(BYTE *pBuf, DWORD count);
+BYTE    UartReadBuf(BYTE *pBuf, DWORD count);
 void    UartSendByte(BYTE dat);
 BYTE    UartHasData(void);
 void    InstallIRQ(int IntNumber, void* HandlerAddr);

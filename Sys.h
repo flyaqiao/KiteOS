@@ -24,7 +24,7 @@ typedef BYTE             *LPBYTE;
 #define TRUE              1
 #define FALSE             0
 #define NULL              0
-#define INFINITE          0xFFFF
+#define INFINITE          (-1)
 
 #define OS_MAX_TASK       7               // 最大任务数
 #define OS_MAX_SIGNAL     16              // 最大信号量
@@ -44,7 +44,7 @@ typedef enum TaskStatus {
 typedef struct OsTcb {
   TASKSTATUS  Status;             // 任务状态
   DWORD       Stack;              // 任务堆栈指针
-  DWORD       Delay;              // 任务延迟
+  int         Delay;              // 任务延迟
 #if OS_MAX_SIGNAL > 0
   DWORD       WaitSignal;         // 任务等待信号量
 #endif
@@ -56,13 +56,13 @@ typedef struct OsTcb {
 extern void   OsInit(void);
 extern void   OsStart(void);
 extern void   OsCreateTask(void *addtsk, DWORD *stkTop, BYTE taskNo, void* param);
-extern void   OsWaitDelay(WORD dlyTime);
+extern void   OsWaitDelay(int dlyTime);
 #if OS_MAX_SIGNAL > 0
-extern BYTE   OsWaitSignal(DWORD signal, WORD dlyTime);
+extern BYTE   OsWaitSignal(DWORD signal, int dlyTime);
 extern void   OsSetSignal(DWORD signal);
 #endif
 #if OS_MAX_MAIL > 0
-extern BYTE   OsWaitMail(BYTE mailNo, WORD dlyTime);
+extern BYTE   OsWaitMail(BYTE mailNo, int dlyTime);
 extern DWORD  OsGetMail(BYTE mailNo);
 //extern void   OsSendMail(BYTE mln, DWORD mail);
 //extern void   OsIsrSendMail(BYTE mln);

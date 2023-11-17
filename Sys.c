@@ -196,7 +196,7 @@ void OsTick(void)
   for (i = 0; i < OS_MAX_TASK; i++) {
     if (g_osTCB[i].Status == TSNone)
       continue;
-    if (g_osTCB[i].Delay != 0) {
+    if (g_osTCB[i].Delay > 0) {
       if (--g_osTCB[i].Delay == 0)
         g_osTCB[i].Status = TSActive;
     }
@@ -214,7 +214,7 @@ void OsTick(void)
 /*
  * 挂起任务延迟dlyTime个ticks
  */
-void OsWaitDelay(WORD dlyTime)
+void OsWaitDelay(int dlyTime)
 {
   OsEnterCritical();
   g_osTCB[g_iActiveTCB].Status = TSDelay;
@@ -256,7 +256,7 @@ DWORD OsGetTimer(void)
 /*
  * 等待某一个信号量
  */
-BYTE OsWaitSignal(DWORD signal, WORD dlyTime)
+BYTE OsWaitSignal(DWORD signal, int dlyTime)
 {
   //首先检查信号量是否有效------
   if ((OsvSignal & signal) == signal) {
@@ -289,7 +289,7 @@ void OsSetSignal(DWORD signal)
 /*
  * 等待一个邮箱
  */
-BYTE OsWaitMail(BYTE mailNo, WORD dlyTime)
+BYTE OsWaitMail(BYTE mailNo, int dlyTime)
 {
   DWORD tmp32 = (1 << mailNo);
   //首先检查邮箱是否有效--------
